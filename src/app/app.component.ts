@@ -1,31 +1,23 @@
+import { UsersBlService } from './users/users.bl.service';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template: `
-    <div>
+    <div >
       <tabs>
-
         <ng-template #titleTemplate let-tab="item">
-          <span class="box">&nbsp;</span>
-          {{tab.title}}
+          <img [src]="tab.title.picture.thumbnail" width="25" height="25">
+          {{tab.title.name.first}}
         </ng-template>
-        <ng-template  [repeat]="3">
-          <tab title="tab 111">
-            <h3>hi, tab 1</h3>
-          </tab>
-        </ng-template>
-        
-        <tab title="tab 2" *repeat="5">
-          <div>
-            <h3>bla bla</h3>
-          </div>
+
+        <tab
+          *ngFor="let user of bl.users"
+          [title]="user"
+        >
+          <app-user-detail [user]="user"></app-user-detail>
         </tab>
-        <tab title="tab 3">
-        <div>
-          <h3>bla bla</h3>
-        </div>
-      </tab>
+        
       </tabs>
     </div>
     
@@ -34,4 +26,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-day3';
+  constructor(public bl : UsersBlService){
+    bl.load(5);
+  }
 }
