@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-5">
-        <div class="media">
+        <div class="media" *ngIf="user;else default">
             <a class="pull-left" href="#">
                 <img class="media-object dp img-circle" [src]="user.picture.thumbnail" style="width: 100px;height:100px;">
             </a>
@@ -17,3 +17,7 @@
         </div>
     </div> 
 </div>
+<ng-template #default>
+    <strong>No User Input {{ (route.params | async) | json  }}</strong>
+    xxx : {{id}}
+</ng-template>

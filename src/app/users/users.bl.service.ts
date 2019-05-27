@@ -11,7 +11,9 @@ export class UsersBlService {
 
     users: IUser[] = [];
 
-    constructor(private proxy : UsersProxyService) { }
+    constructor(private proxy : UsersProxyService) { 
+        this.load(5);
+    }
 
     async load(num:number){
         // option 1

@@ -5,20 +5,20 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <div >
-      <tabs>
-        <ng-template #titleTemplate let-tab="item">
-          <img [src]="tab.title.picture.thumbnail" width="25" height="25">
-          {{tab.title.name.first}}
-        </ng-template>
+      <h3> NG Day 3</h3>
+      
+      <nav>
+        <a routerLink="/home">home</a> | 
+        <a routerLink="/users/123">users</a> | 
+        <a [routerLink]="['users', '111']" fragment= 'aaa'>users aaa</a> | 
+        <a [routerLink]="['users', '111']" fragment= 'bbb'>users bbb</a> | 
+        <a routerLink="/tabs">tabs</a> | 
+        <a routerLink="/error">error</a> | 
 
-        <tab
-          *ngFor="let user of bl.users"
-          [title]="user"
-        >
-          <app-user-detail [user]="user"></app-user-detail>
-        </tab>
-        
-      </tabs>
+      </nav>
+      <div>
+        <router-outlet></router-outlet>
+      </div>
     </div>
     
   `,
@@ -26,7 +26,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-day3';
-  constructor(public bl : UsersBlService){
-    bl.load(5);
-  }
+  
 }

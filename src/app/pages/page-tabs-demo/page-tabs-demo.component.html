@@ -1,0 +1,17 @@
+<tabs>
+    <ng-template #titleTemplate let-tab="item">
+      <img [src]="tab.title.picture.thumbnail" width="25" height="25">
+      {{tab.title.name.first}}
+    </ng-template>
+
+    <tab
+      *ngFor="let user of bl.users"
+      [title]="user"
+    >
+    <!--
+            <app-user-detail [user]="user"></app-user-detail>
+
+    -->
+    </tab>
+    
+  </tabs>
