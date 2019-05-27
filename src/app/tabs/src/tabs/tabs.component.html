@@ -1,0 +1,24 @@
+<div class="tabbable-panel">
+    <div class="tabbable-line">
+      <ul class="nav nav-tabs ">
+      <li
+        [class.active]="tab.active"
+        (click)="setActive(tab)"
+        *ngFor="let tab of tabs"
+      >
+        <ng-template #default>
+          <a href="#">{{tab.title}}</a>
+        </ng-template>
+          
+        <div *ngIf="titleRef;else default">
+            <ng-container 
+            *ngTemplateOutlet="titleRef; context: {item:tab}"></ng-container>
+        </div>
+       
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content">     
+        <ng-content ></ng-content> 
+  </div>  
+</div>

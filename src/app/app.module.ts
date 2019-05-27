@@ -2,13 +2,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { TabsModule } from './tabs';
+import { RepeatDirective } from './directives/repeat.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RepeatDirective
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+
+    TabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
